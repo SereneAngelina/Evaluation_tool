@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010083047) do
+ActiveRecord::Schema.define(version: 20171010102642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20171010083047) do
     t.date "ends_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.date "day"
+    t.string "color_code"
+    t.text "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "student_id"
+    t.index ["student_id"], name: "index_evaluations_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -49,5 +59,6 @@ ActiveRecord::Schema.define(version: 20171010083047) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "evaluations", "students"
   add_foreign_key "students", "batches"
 end
