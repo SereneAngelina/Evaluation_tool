@@ -1,0 +1,23 @@
+<%= form_for [@student, @student.evaluations.new] do |f| %>
+
+
+      <div class="row text-center">
+
+        <div class="form-group">
+            <p><label>Today's Evaluation:</label></p>
+            <%= f.date_select :day, class: "form-control" %>
+            <%= f.text_field :color_code, placeholder: "color_code" %>
+            <label>Remarks</label>
+            <%= f.text_area :remarks, placeholder: "Add Remarks" %>
+
+
+        </div>
+
+        <div class="actions">
+         <%= f.submit "Save", class: "btn btn-success" %>
+         <%= f.submit "Save and next", name: "save_next" %>
+        </div>
+
+        <% end %>
+
+     </div>

@@ -15,9 +15,12 @@ batch3 = Batch.create(code: 3, starts_at: Date.today + 15, ends_at: Date.today +
 
 
 student1 = Student.create!(name: "Jane", image_url: "image", batch: batch1)
-student1 = Student.create!(name: "Jamie", image_url: "image", batch: batch1)
-student1 = Student.create!(name: "Harriet", image_url: "image", batch: batch1)
+student2 = Student.create!(name: "Jamie", image_url: "image", batch: batch1)
+student3 = Student.create!(name: "Harriet", image_url: "image", batch: batch1)
 
-student1 = Student.create!(name: "Vicky", image_url: "image", batch: batch1)
-student1 = Student.create!(name: "Amy", image_url: "image", batch: batch1)
-student1 = Student.create!(name: "Darlene", image_url: "image", batch: batch1)
+student4 = Student.create!(name: "Vicky", image_url: "image", batch: batch1)
+student5 = Student.create!(name: "Amy", image_url: "image", batch: batch1)
+student6 = Student.create!(name: "Darlene", image_url: "image", batch: batch1)
+
+evaluation1 = Evaluation.create(day: Date.today - 2, color_code: "green", remarks: "Good", student: student1)
+evaluation2 = Evaluation.create(day: Date.today - 3, color_code: "green", remarks: "Much better", student: student1)
