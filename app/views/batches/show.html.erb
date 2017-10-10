@@ -8,8 +8,8 @@
 
       <div class="panel-body text-center">
         <% @batch.students.each do |student| %>
-            <h4><%= student.name %></h4>
-            <%= student.image_url %>
+            <h4><%=link_to student.name, batch_student_path(@batch, student.id) %></h4>
+            <%= link_to student.image_url,batch_student_path(@batch, student.id) %>
             <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, batch_student_path(@batch, student),
             method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
@@ -19,8 +19,6 @@
         <%= render 'form' %>
       </div>
 
-
-       <%#= link_to "Add new song", artist_song_path, class: "btn btn-warning" %>
     </div>
 
 </div>
