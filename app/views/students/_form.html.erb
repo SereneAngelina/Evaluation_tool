@@ -7,6 +7,30 @@
             <p><label>Today's Evaluation:</label></p>
             <%= f.date_select :day, class: "form-control" %>
             <%= f.text_field :color_code, placeholder: "color_code" %>
+            <p>Select the color code </p>
+
+            <div>
+                <%= f.radio_button :color_code, "green" %>
+                <svg width="40" height="30">
+                <rect width="40" height="30" style="fill:rgb(0,255,0);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+                <br />
+
+
+                <%= f.radio_button :color_code, "orange" %>
+                <svg width="40" height="30">
+                <rect width="40" height="30" style="fill:rgb(255,69,0);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+                <br />
+
+                <%= f.radio_button :color_code, "red" %>
+                <svg width="40" height="30">
+                <rect width="40" height="30" style="fill:rgb(255,0,0);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+                <br />
+
+            </div>
+
             <label>Remarks</label>
             <%= f.text_area :remarks, placeholder: "Add Remarks" %>
 

@@ -10,6 +10,31 @@
         <% @batch.students.each do |student| %>
             <h4><%=link_to student.name, batch_student_path(@batch, student.id) %></h4>
             <%= link_to student.image_url,batch_student_path(@batch, student.id) %>
+            <% student.evaluations.last(1).each do |student_evaluation| %>
+                <% if student_evaluation.color_code === "green"%>
+                <svg width="40" height="30">
+                <rect width="40" height="30" style="fill:rgb(0,255,0);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+
+                <% elsif student_evaluation.color_code === "orange" %>
+                <svg width="40" height="30">
+                <rect width="40" height="30" style="fill:rgb(255,69,0);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+
+                <% elsif student_evaluation.color_code === "red" %>
+                <svg width="40" height="30">
+                <rect width="40" height="30" style="fill:rgb(255,0,0);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+
+                <% else %>
+                <p> Yet to add your progress.... </p>
+                <% end %>
+
+            <% end %>
+
+
+
+
             <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, batch_student_path(@batch, student),
             method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
