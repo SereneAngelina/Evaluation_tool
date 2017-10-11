@@ -5,6 +5,32 @@
       <div class="panel-heading text-center">
         <h3>Students</h3>
       </div>
+      <% green_code = 0 %>
+      <% orange_code = 0 %>
+      <% red_code = 0 %>
+      <% @batch.students.each do |student| %>
+      <% student.evaluations.last(1).each do |student_evaluation| %>
+         <% if student_evaluation.color_code === "green"%>
+          <% green_code = green_code + 1 %>
+          <% elsif student_evaluation.color_code === "orange" %>
+          <% orange_code = orange_code + 1 %>
+          <% elsif student_evaluation.color_code === "red" %>
+          <% red_code = red_code + 1 %>
+
+        <% end %>
+      <% end %>
+     <% end %>
+      <% student_count = @batch.students.length %>
+      <% average_green = (green_code.fdiv(student_count)) * 100 %>
+      <% average_orange = (orange_code.fdiv(student_count)) * 100 %>
+      <% average_red = (red_code.fdiv(student_count)) * 100 %>
+
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" style="width:<%= average_green %>%"></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" style="width:<%= average_orange %>%"></div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" style="width:<%= average_red %>%"></div>
+     </div>
+
 
       <div class="panel-body text-center">
         <% @batch.students.each do |student| %>
