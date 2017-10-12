@@ -10,19 +10,23 @@
       <% green_code = 0 %>
       <% orange_code = 0 %>
       <% red_code = 0 %>
+      <% student_count =0 %>
       <% @batch.students.each do |student| %>
       <% student.evaluations.last(1).each do |student_evaluation| %>
           <% if student_evaluation.color_code === "green"%>
           <% green_code = green_code + 1 %>
+          <% student_count = student_count + 1 %>
           <% elsif student_evaluation.color_code === "orange" %>
           <% orange_code = orange_code + 1 %>
+          <% student_count = student_count + 1 %>
           <% elsif student_evaluation.color_code === "red" %>
           <% red_code = red_code + 1 %>
+          <% student_count = student_count + 1 %>
 
         <% end %>
       <% end %>
      <% end %>
-      <% student_count = @batch.students.length %>
+
       <% average_green = (green_code.fdiv(student_count)) * 100 %>
       <% average_orange = (orange_code.fdiv(student_count)) * 100 %>
       <% average_red = (red_code.fdiv(student_count)) * 100 %>
@@ -37,11 +41,13 @@
      </div>
 
       <div class="panel-body text-center">
+        <table style="width:400px" align="center">
         <% @batch.students.each do |student| %>
-            <h4><%=link_to student.name, batch_student_path(@batch, student) %></h4>
-             <%= link_to student.image_url, batch_student_path(@batch, student)  %>
-
-
+            <tr>
+            <td><%= link_to image_tag(student.image_url,class: 'img-rounded',width: '100px', height: '100px'), batch_student_path(@batch, student)  %></td>
+            <td><h3><%=link_to student.name, batch_student_path(@batch, student) %></h3></td>
+             <td align="center">
+               <h4>
             <% student.evaluations.last(1).each do |student_evaluation| %>
                 <% if student_evaluation.color_code === "green"%>
                 <svg width="40" height="30">
@@ -63,13 +69,20 @@
                 <% end %>
 
             <% end %>
+          </h4>
+          </td>
 
+          <td><h4><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_batch_student_path(@batch, student) %>
+          <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, batch_student_path(@batch, student),
+          method: :delete, data: { confirm: "Are you sure?" } %></h4></td>
 
-            <%= link_to 'Edit', edit_batch_student_path(@batch, student) %>
+        </tr>
 
-            <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, batch_student_path(@batch, student),
-            method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
+      </table>
+
+
+
       </div>
 
       <div>

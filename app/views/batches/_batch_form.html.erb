@@ -1,21 +1,53 @@
-<%= form_for Batch.new do |f| %>
+<%= form_for @batch, html: { multipart: true } do |f| %>
 
 
-      <div class="row text-center">
+<% if @batch.errors.any? %>
+  <div>
+    <ul>
+    <% @batch.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
+<div class = "row">
+
+  <div class="panel panel-warning col-md-8 col-md-offset-2">
+
+      <div class="panel-heading text-center">
+        <h3>New Batch</h3>
+      </div>
+
+
+      <div class="panel-body text-center">
         <div class="form-group">
-            <p><label>Batch number:</label>
-            <%= f.text_field :code, placeholder: "Add batch number" %></p>
-            <label>Start date :</label>
-            <%= f.date_select :starts_at %>
-            <label>End date :</label>
-            <%= f.date_select :ends_at %>
+        <table class = "table table-striped">
+          <tr>
+            <td class="columheader"> Batch </td>
+            <td class="columheader"> Start Date </td>
+            <td class="columheader"> End Date </td>
+          </tr>
+
+
+
+            <tr>
+            <td><%= f.text_field :code, placeholder: "Add batch number" %></td>
+            <td><%= f.date_select :starts_at %></td>
+            <td><%= f.date_select :ends_at %></td>
+          </tr>
+
+      </table>
         </div>
 
         <div class="actions">
          <%= f.submit "Add new batch", class: "btn btn-success" %>
         </div>
+      <span class="pull-left"><%= link_to "Back", batches_path %></span>
 
         <% end %>
 
      </div>
+   </div>
+
+ </div>

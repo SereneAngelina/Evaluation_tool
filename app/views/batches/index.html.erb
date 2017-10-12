@@ -1,3 +1,4 @@
+
 <div class = "row">
 
   <div class="panel panel-warning col-md-6 col-md-offset-3">
@@ -7,17 +8,27 @@
       </div>
 
       <div class="panel-body text-center">
+
+        <table class = "table table-striped">
+          <tr>
+            <td class="columheader"> Batch </td>
+            <td class="columheader"> Start Date </td>
+            <td class="columheader"> End Date </td>
+          </tr>
+
+
         <% @batches.each do |batch| %>
-            <h4><%= link_to "Batch #{batch.code}", batch_path(batch) %></h4>
-              <p><b>Starts at:</b> <%= batch.starts_at %>
-               <b>Ends at: </b> <%= batch.ends_at %> </p>
+        <tr>
+            <td><%= link_to "Batch #{batch.code}", batch_path(batch) %></td>
+              <td> <%= batch.starts_at %></td>
+               <td> <%= batch.ends_at %> </td>
+          </tr>
+
 
         <% end %>
 
-        <div>
-          <%= render 'batch_form' %>
-        </div>
-
+      </table>
+      <p><%= link_to "Add new batch", new_batch_path, class: "btn btn-success" %></p>
       </div>
 
     </div>
