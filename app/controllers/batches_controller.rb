@@ -6,14 +6,22 @@ class BatchesController < ApplicationController
 
   def show
     @batch = Batch.find(params[:id])
+
+  end
+
+  def new
+    @batch =Batch.new
   end
 
 
 
  def create
    @batch = Batch.new(batch_params)
-   @batch.save
+   if @batch.save
    redirect_to batches_path
+   else
+   render :new
+ end
 
  end
 
