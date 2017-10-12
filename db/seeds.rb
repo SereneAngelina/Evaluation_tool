@@ -14,13 +14,17 @@ batch2 = Batch.create(code: 2, starts_at: Date.today + 10, ends_at: Date.today +
 batch3 = Batch.create(code: 3, starts_at: Date.today + 15, ends_at: Date.today + 20)
 
 
-student1 = Student.create!(name: "Jane", image_url: "image", batch: batch1)
-student2 = Student.create!(name: "Jamie", image_url: "image", batch: batch1)
-student3 = Student.create!(name: "Harriet", image_url: "image", batch: batch1)
+student1 = Student.create!(name: "Jane", remote_image_url_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796672/student1_oo5chi.jpg", batch: batch1)
+student2 = Student.create!(name: "Jamie", remote_image_url_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796695/student3_uqrlkd.jpg", batch: batch1)
+student3 = Student.create!(name: "Harriet", remote_image_url_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796687/student2_pbpfoh.jpg", batch: batch1)
 
-student4 = Student.create!(name: "Vicky", image_url: "image", batch: batch1)
-student5 = Student.create!(name: "Amy", image_url: "image", batch: batch1)
-student6 = Student.create!(name: "Darlene", image_url: "image", batch: batch1)
+
 
 evaluation1 = Evaluation.create(day: Date.today - 2, color_code: "green", remarks: "Good", student: student1)
 evaluation2 = Evaluation.create(day: Date.today - 3, color_code: "green", remarks: "Much better", student: student1)
+
+evaluation3 = Evaluation.create(day: Date.today - 2, color_code: "orange", remarks: "Good", student: student2)
+evaluation4 = Evaluation.create(day: Date.today - 3, color_code: "red", remarks: "Much better", student: student2)
+
+evaluation5 = Evaluation.create(day: Date.today - 2, color_code: "red", remarks: "Good", student: student3)
+evaluation6 = Evaluation.create(day: Date.today - 3, color_code: "orange", remarks: "Much better", student: student3)
