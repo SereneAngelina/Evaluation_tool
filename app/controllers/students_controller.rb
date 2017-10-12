@@ -17,10 +17,10 @@ def create
 end
 
 def destroy
-
+    @batch = Batch.find(params[:batch_id])
     @student = Student.find(params[:id])
     @student.destroy
-    redirect_to student_path(@student)
+    redirect_to batch_path(@batch)
 end
 
 
