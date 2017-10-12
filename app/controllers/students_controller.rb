@@ -16,6 +16,21 @@ def create
 
 end
 
+def edit
+  batch = Batch.find(params[:batch_id])
+  @student = batch.students.find(params[:id])
+end
+
+def update
+    @student = Student.find(params[:id])
+
+    if @student.update_attributes(student_params)
+      redirect_to @student.batch
+    else
+      render 'edit'
+    end
+end
+
 def destroy
     @batch = Batch.find(params[:batch_id])
     @student = Student.find(params[:id])
