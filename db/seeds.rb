@@ -14,9 +14,9 @@ batch2 = Batch.create(code: 2, starts_at: Date.today + 10, ends_at: Date.today +
 batch3 = Batch.create(code: 3, starts_at: Date.today + 15, ends_at: Date.today + 20)
 
 
-student1 = Student.create!(name: "Jane", remote_image_url_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796672/student1_oo5chi.jpg", batch: batch1)
-student2 = Student.create!(name: "Jamie", remote_image_url_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796695/student3_uqrlkd.jpg", batch: batch1)
-student3 = Student.create!(name: "Harriet", remote_image_url_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796687/student2_pbpfoh.jpg", batch: batch1)
+student1 = Student.create!(name: "Jane", image_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796672/student1_oo5chi.jpg", batch: batch1)
+student2 = Student.create!(name: "Jamie", image_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796695/student3_uqrlkd.jpg", batch: batch1)
+student3 = Student.create!(name: "Harriet", image_url: "http://res.cloudinary.com/dvmfuraf4/image/upload/v1507796687/student2_pbpfoh.jpg", batch: batch1)
 
 
 

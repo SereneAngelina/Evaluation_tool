@@ -39,9 +39,9 @@
       <div class="panel-body text-center">
         <% @batch.students.each do |student| %>
             <h4><%=link_to student.name, batch_student_path(@batch, student) %></h4>
-             <%= link_to image_tag(student.image_url.thumbnail), batch_student_path(@batch, student)  %>
+             <%= link_to student.image_url, batch_student_path(@batch, student)  %>
 
-          
+
             <% student.evaluations.last(1).each do |student_evaluation| %>
                 <% if student_evaluation.color_code === "green"%>
                 <svg width="40" height="30">
@@ -65,7 +65,7 @@
             <% end %>
 
 
-
+            <%= link_to 'Edit', edit_batch_student_path(@batch, student) %>
 
             <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, batch_student_path(@batch, student),
             method: :delete, data: { confirm: "Are you sure?" } %>

@@ -7,17 +7,30 @@
       </div>
 
       <div class="panel-body text-center">
-        <p><%= @student.name %></p>
-        <p><%= @student.batch.code %></p>
+        <p><b><%= @student.name %></b></p>
+        <p>Batch<%= @student.batch.code %></p>
         <% @student.evaluations.each do |evaluation| %>
-            <%= evaluation.color_code %>
+
+            <% if evaluation.color_code === "green"%>
+             <%= link_to "<button class='btn btn-success btn-lg'>  </button>".html_safe, edit_student_evaluation_path(@student, evaluation) %>
+
+            <% elsif evaluation.color_code === "orange" %>
+            <%= link_to "<button class='btn btn-warning btn-lg'></button>".html_safe, edit_student_evaluation_path(@student, evaluation) %>
+
+            <% elsif evaluation.color_code === "red" %>
+            <%= link_to "<button class='btn btn-danger btn-lg'></button>".html_safe, edit_student_evaluation_path(@student, evaluation) %>
+            <% end %>
+
         <% end %>
 
 
       </div>
       <div>
         <%= render 'form' %>
+
       </div>
+
+
 
     </div>
 

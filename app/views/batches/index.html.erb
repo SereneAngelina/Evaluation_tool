@@ -8,9 +8,9 @@
 
       <div class="panel-body text-center">
         <% @batches.each do |batch| %>
-            <h4>Batch<%= link_to batch.code, batch_path(batch) %></h4>
-                <%= batch.starts_at %>
-             <%= batch.ends_at %>
+            <h4><%= link_to "Batch #{batch.code}", batch_path(batch) %></h4>
+              <p><b>Starts at:</b> <%= batch.starts_at %>
+               <b>Ends at: </b> <%= batch.ends_at %> </p>
 
         <% end %>
 

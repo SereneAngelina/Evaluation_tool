@@ -9,7 +9,7 @@ class EvaluationsController < ApplicationController
     @new_evaluation.save
     @student_next = Student.where('id > ?', params[:student_id]).first
     redirect_to batch_student_path(@student_next.batch, @student_next.id)
-  
+
 
     else
     @student = Student.find(params[:student_id])
@@ -19,6 +19,21 @@ class EvaluationsController < ApplicationController
     redirect_to @student.batch
 
   end
+end
+
+def edit
+  @student = Student.find(params[:student_id])
+  @evaluation = Evaluation.find(params[:id])
+end
+
+def update
+    @evaluation = Evaluation.find(params[:id])
+
+    if @evaluation.update_attributes(evaluation_params)
+      redirect_to @evaluation.student
+    else
+      render 'edit'
+    end
 end
 
 
