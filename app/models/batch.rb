@@ -9,7 +9,7 @@ class Batch < ApplicationRecord
     @batch = Batch.find(id)
     green_student = []
     red_student = []
-    orange_student = []
+    yellow_student = []
     @batch.students.each do |student|
 
       if !student.evaluations.any?
@@ -21,8 +21,8 @@ class Batch < ApplicationRecord
           green_student.push(student)
        elsif student_evaluation.color_code === "red"
           red_student.push(student)
-        elsif student_evaluation.color_code === "orange"
-          orange_student.push(student)
+        elsif student_evaluation.color_code === "yellow"
+          yellow_student.push(student)
 
         end
       end
@@ -30,14 +30,13 @@ class Batch < ApplicationRecord
       end
     end
     random_pick = rand()
-    puts random_pick
     case
     when random_pick <= 0.17
       return " " if !green_student.any?
       green_student.sample
     when random_pick <= 0.50
-      return " " if !orange_student.any?
-      orange_student.sample
+      return " " if !yellow_student.any?
+      yellow_student.sample
     when random_pick <= 1.0
       return " " if !red_student.any?
       red_student.sample
