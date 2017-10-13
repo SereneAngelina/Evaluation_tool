@@ -7,8 +7,13 @@
       </div>
 
       <div class="panel-body text-center">
-        <p><b><%= @student.name %></b></p>
-        <p>Batch<%= @student.batch.code %></p>
+        <table style="width:400px" align="center">
+          <tr>
+              <td><%= image_tag(@student.image_url,class: 'img-rounded',width: '100px', height: '100px')  %></td>
+        <td><h3><%= @student.name %></h4></td>
+        <td><h3>Batch<%= @student.batch.code %></h3></td>
+      
+        <td>
         <% @student.evaluations.each do |evaluation| %>
 
             <% if evaluation.color_code === "green"%>
@@ -22,6 +27,9 @@
             <% end %>
 
         <% end %>
+      </td>
+    </tr>
+  </table>
 
 
       </div>

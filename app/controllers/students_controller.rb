@@ -11,8 +11,12 @@ end
 def create
   @new_student = Student.new(student_params)
   @new_student.batch_id = params[:batch_id]
-  @new_student.save
+  if @new_student.save
   redirect_to @new_student.batch
+else
+  redirect_to @new_student.batch, notice: "Please fill valid details"
+end
+
 
 end
 
@@ -25,7 +29,7 @@ def update
     @student = Student.find(params[:id])
 
     if @student.update_attributes(student_params)
-      redirect_to @student.batch
+      redirect_to @student.batch,  notice: 'Successfully updated'
     else
       render 'edit'
     end

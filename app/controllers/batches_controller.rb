@@ -1,10 +1,11 @@
 class BatchesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @batches = Batch.all
+    @batches = Batch.all.order_by_number
   end
 
   def show
+
     @batch = Batch.find(params[:id])
 
   end
@@ -18,7 +19,7 @@ class BatchesController < ApplicationController
  def create
    @batch = Batch.new(batch_params)
    if @batch.save
-   redirect_to batches_path
+   redirect_to batches_path, notice: 'Batch added'
    else
    render :new
  end
