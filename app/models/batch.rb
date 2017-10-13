@@ -5,12 +5,17 @@ class Batch < ApplicationRecord
   validates :starts_at, presence: true
   validates :ends_at, presence: true
 
+  def self.order_by_number
+    order :code
+  end
+
+
+
   def ask_question
-    @batch = Batch.find(id)
     green_student = []
     red_student = []
     yellow_student = []
-    @batch.students.each do |student|
+    students.each do |student|
 
       if !student.evaluations.any?
         red_student.push(student)

@@ -20,8 +20,8 @@
         <% @batches.each do |batch| %>
         <tr>
             <td><%= link_to "Batch #{batch.code}", batch_path(batch) %></td>
-              <td> <%= batch.starts_at %></td>
-               <td> <%= batch.ends_at %> </td>
+              <td> <%= batch.starts_at.strftime("%d/%m/%Y") %></td>
+               <td> <%= batch.ends_at.strftime("%d/%m/%Y") %> </td>
           </tr>
 
 

@@ -5,6 +5,12 @@
       <div class="panel-heading text-center">
         <h3>Students</h3>
       </div>
+      <% if !@batch.students.any?  %>
+      <h2 class="text-center"> No students added yet </h2>
+      <div>
+        <%= render 'form' %>
+      </div>
+      <% else %>
 
 
       <% green_code = 0 %>
@@ -32,9 +38,9 @@
       <% average_red = (red_code.fdiv(student_count)) * 100 %>
 
       <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" style="width:<%= average_green %>%"></div>
-        <div class="progress-bar progress-bar-warning" role="progressbar" style="width:<%= average_yellow %>%"></div>
-        <div class="progress-bar progress-bar-danger" role="progressbar" style="width:<%= average_red %>%"></div>
+        <div class="progress-bar progress-bar-striped active progress-bar-success" role="progressbar" style="width:<%= average_green %>%"></div>
+        <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" style="width:<%= average_yellow %>%"></div>
+        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" style="width:<%= average_red %>%"></div>
      </div>
      <div>
        <%= render 'random_pick' %>
@@ -76,9 +82,11 @@
           <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, batch_student_path(@batch, student),
           method: :delete, data: { confirm: "Are you sure?" } %></h4></td>
 
+
         </tr>
 
         <% end %>
+
       </table>
 
 
@@ -88,6 +96,8 @@
       <div>
         <%= render 'form' %>
       </div>
+
+    <% end %>
 
     </div>
 
