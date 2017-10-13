@@ -8,7 +8,7 @@
 
 
       <% green_code = 0 %>
-      <% orange_code = 0 %>
+      <% yellow_code = 0 %>
       <% red_code = 0 %>
       <% student_count =0 %>
       <% @batch.students.each do |student| %>
@@ -16,8 +16,8 @@
           <% if student_evaluation.color_code === "green"%>
           <% green_code = green_code + 1 %>
           <% student_count = student_count + 1 %>
-          <% elsif student_evaluation.color_code === "orange" %>
-          <% orange_code = orange_code + 1 %>
+          <% elsif student_evaluation.color_code === "yellow" %>
+          <% yellow_code = yellow_code + 1 %>
           <% student_count = student_count + 1 %>
           <% elsif student_evaluation.color_code === "red" %>
           <% red_code = red_code + 1 %>
@@ -28,12 +28,12 @@
      <% end %>
 
       <% average_green = (green_code.fdiv(student_count)) * 100 %>
-      <% average_orange = (orange_code.fdiv(student_count)) * 100 %>
+      <% average_yellow = (yellow_code.fdiv(student_count)) * 100 %>
       <% average_red = (red_code.fdiv(student_count)) * 100 %>
 
       <div class="progress">
         <div class="progress-bar progress-bar-success" role="progressbar" style="width:<%= average_green %>%"></div>
-        <div class="progress-bar progress-bar-warning" role="progressbar" style="width:<%= average_orange %>%"></div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" style="width:<%= average_yellow %>%"></div>
         <div class="progress-bar progress-bar-danger" role="progressbar" style="width:<%= average_red %>%"></div>
      </div>
      <div>
@@ -54,9 +54,9 @@
                 <rect width="40" height="30" style="fill:rgb(0,255,0);stroke-width:3;stroke:rgb(0,0,0)" />
                 </svg>
 
-                <% elsif student_evaluation.color_code === "orange" %>
+                <% elsif student_evaluation.color_code === "yellow" %>
                 <svg width="40" height="30">
-                <rect width="40" height="30" style="fill:rgb(255,69,0);stroke-width:3;stroke:rgb(0,0,0)" />
+                <rect width="40" height="30" style="fill:rgb(255,204,0);stroke-width:3;stroke:rgb(0,0,0)" />
                 </svg>
 
                 <% elsif student_evaluation.color_code === "red" %>

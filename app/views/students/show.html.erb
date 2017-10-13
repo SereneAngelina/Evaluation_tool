@@ -14,7 +14,7 @@
             <% if evaluation.color_code === "green"%>
              <%= link_to "<button class='btn btn-success btn-lg'>  </button>".html_safe, edit_student_evaluation_path(@student, evaluation) %>
 
-            <% elsif evaluation.color_code === "orange" %>
+            <% elsif evaluation.color_code === "yellow" %>
             <%= link_to "<button class='btn btn-warning btn-lg'></button>".html_safe, edit_student_evaluation_path(@student, evaluation) %>
 
             <% elsif evaluation.color_code === "red" %>

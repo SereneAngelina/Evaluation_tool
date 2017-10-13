@@ -23,8 +23,8 @@ student3 = Student.create!(name: "Harriet", image_url: "http://res.cloudinary.co
 evaluation1 = Evaluation.create(day: Date.today - 2, color_code: "green", remarks: "Good", student: student1)
 evaluation2 = Evaluation.create(day: Date.today - 3, color_code: "green", remarks: "Much better", student: student1)
 
-evaluation3 = Evaluation.create(day: Date.today - 2, color_code: "orange", remarks: "Good", student: student2)
+evaluation3 = Evaluation.create(day: Date.today - 2, color_code: "yellow", remarks: "Good", student: student2)
 evaluation4 = Evaluation.create(day: Date.today - 3, color_code: "red", remarks: "Much better", student: student2)
 
 evaluation5 = Evaluation.create(day: Date.today - 2, color_code: "red", remarks: "Good", student: student3)
-evaluation6 = Evaluation.create(day: Date.today - 3, color_code: "orange", remarks: "Much better", student: student3)
+evaluation6 = Evaluation.create(day: Date.today - 3, color_code: "yellow", remarks: "Much better", student: student3)
