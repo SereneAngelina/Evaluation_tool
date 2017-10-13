@@ -18,9 +18,14 @@
        </div>
 
        <div class="modal-body text-center">
+
          <% picked_student = @batch.ask_question %>
+         <% if picked_student == " " %>
+         <h1>Oops!!! Pick another student</h1>
+          <% else %>
          <h2><%= picked_student.name %></h2>
          <%= image_tag(picked_student.image_url,class: 'img-rounded',width: '150px', height: '150px') %>
+         <% end %>
        </div>
 
        <div class="modal-footer">
