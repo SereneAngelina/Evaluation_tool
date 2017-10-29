@@ -14,6 +14,6 @@ Make sure you have [Ruby](https://www.ruby-lang.org/en/) and [Bundler](http://bu
 4. rails server
 
 ## Build with
-..* Ruby on rails
-..* HTML & CSS
-..* jQuery
+* Ruby on rails
+* HTML & CSS
+* jQuery
